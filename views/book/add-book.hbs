@@ -1,0 +1,12 @@
+<form action="/book/add-book" method="post">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Email address</label>
+        <input value="{{name}}" type="text" class="form-control" name="name" id="name" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Example textarea</label>
+        <textarea class="form-control" name="description" id="description" rows="3">{{description}}</textarea>
+    </div>
+    <input type="submit" value="Registar">
+</form>

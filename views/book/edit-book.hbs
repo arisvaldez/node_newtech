@@ -1,0 +1,16 @@
+<form action="/book/edit/{{id}}" method="post">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Titulo</label>
+        <input value="{{title}}" type="text" class="form-control" name="name" id="name" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="year" class="form-label">Año de publicación</label>
+        <input value="{{year}}" type="number" class="form-control" name="year" id="name" placeholder="1978">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Descripcion</label>
+        <textarea class="form-control" name="description" id="description" rows="3">{{description}}</textarea>
+    </div>
+    <input type="submit" value="Registar">
+</form>

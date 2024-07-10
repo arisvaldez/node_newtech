@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Year</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each books}}
+        <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{year}}</td>
+            <td>
+                <a href="/book/edit/{{id}}" class="me-3"><i class="bi bi-pencil"></i></a>
+                <a href="#"><i class="bi bi-trash3"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

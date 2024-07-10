@@ -1,11 +1,9 @@
+const { request } = require('express');
+const User = require('../models/user')
 
-
-const retrieve = (request, response) => {
-    response.json([
-        'la manosa',
-        '2 pesos de agua',
-        'maria la llorona'
-    ]);
+const retrieve = async (request, response) => {
+    const users = await User.findAll();
+    response.json(users);
 }
 
 const retrieveById = (request, response) => {
