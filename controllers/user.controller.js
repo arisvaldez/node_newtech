@@ -1,5 +1,6 @@
 const { request } = require('express');
 const User = require('../models/user')
+const bcryptjs = require('bcryptjs');
 
 const retrieve = async (request, response) => {
     // Find all users
@@ -19,11 +20,21 @@ const retrieveById = async (req = request, response) => {
 
 
 const create = async (req = request, response) => {
-    const { nombre, apellido, email } = req.body;
 
-    const newUser = await User.create({ nombre, apellido, email });
+    try {
 
-    response.json(newUser);
+        const { nombre, apellido, email, pwd } = req.body;
+        const salt = bcryptjs.genSaltSync();
+        hashedPwd = bcryptjs.hashSync(pwd, salt);
+
+        const user = await User.create({ nombre, apellido, email, pwd: hashedPwd });
+        const { nombre: name, apellido: lastName, email: correo, ...rest } = user;
+
+        response.json({ name, lastName, correo });
+    } catch (error) {
+        console.error(error);
+        response.status(400).json({ msg: 'Faltan Campos requeridos' });
+    }
 }
 
 const modify = (request, response) => {

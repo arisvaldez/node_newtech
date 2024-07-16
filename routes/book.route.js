@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const { jwtValidator } = require('../middleware/jwt-validator')
 
 const {
     retrieve,
@@ -9,8 +10,7 @@ const {
     remove
 } = require('../controllers/book.controller');
 
-
-router.get('/', retrieve);
+router.get('/', [jwtValidator], retrieve);
 
 router.get('/:id', retrieveById);
 

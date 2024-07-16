@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        myHeaders.append("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsInJvbGVzIjpbInN5c0FkbWluIiwic3VwZXJ2aXNvciJdLCJpYXQiOjE3MjEwOTQwNjEsImV4cCI6MTcyMTEzNzI2MX0.MtTx5M9hcM1VCoeymD9bt6Pab6Vj0RJH9ptEXimhGKs")
+
+        fetch('api/book', {
+            headers: myHeaders
+        })
+            .then(response => response.json())
+            .then(console.log)
+            .catch(console.error)
+    </script>
+</body>
+
+</html>

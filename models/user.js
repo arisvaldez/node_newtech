@@ -18,6 +18,9 @@ const User = sequelize.define('usuario',
         },
         email: {
             type: DataTypes.STRING
+        },
+        pwd: {
+            type: DataTypes.STRING
         }
     }, {
     tableName: 'usuario',
