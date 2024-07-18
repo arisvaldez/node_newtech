@@ -2,10 +2,10 @@ const { response, request } = require('express')
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-
 const jwtValidator = async (req = request, res = response, next) => {
     const token = req.header('token');
     privateKey = '4a57bd92-1739-4275-bb19-cc2b33591d57';
+    
     if (!token) {
         return res.status(401).json({ msg: 'Token Not Found' })
     }

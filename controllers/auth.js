@@ -14,7 +14,7 @@ const login = async (req = request, res = response) => {
         if (!user) {
             return res
                 .status(400)
-                .json({ msg: 'User or Password invalid - User Not Found' });
+                .json({ statusCode: 400, msg: 'User or Password invalid - User Not Found' });
         }
 
 
@@ -23,21 +23,22 @@ const login = async (req = request, res = response) => {
         if (!validPassword) {
             return res
                 .status(400)
-                .json({ msg: 'User or Password invalid - invalid Password' });
+                .json({ statusCode: 400, msg: 'User or Password invalid - invalid Password' });
         }
 
         const token = await generateJWT({
             uid: user.id,
+            username: user.nombre,
             roles: ['sysAdmin', 'supervisor']
         });
 
-        res.json({ user, token });
+        res.json({ token });
     } catch (ex) {
         console.error(ex);
 
         res
             .status(500)
-            .json({ msg: 'An error was happen, contact with administrator' });
+            .json({ statusCode: 500, msg: 'An error was happen, contact with administrator' });
     }
 };
 
